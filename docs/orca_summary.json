@@ -1,0 +1,54 @@
+{
+  "split_usato": "intra_class (train + val_seen, ufficiale ORCA)",
+  "n_specie_totali_split_intra_class": 552,
+  "n_immagini_train": 9006,
+  "n_immagini_val": 2720,
+  "overlap_train_val": 0,
+  "soglia_scelta": 20,
+  "n_specie_selezionate": 200,
+  "n_immagini_selezionate_train": 6573,
+  "n_classi_senza_val": 0,
+  "soglie_valutate": [
+    {
+      "soglia_min_img_per_specie": 5,
+      "n_specie_incluse": 520,
+      "n_immagini_totali": 10087
+    },
+    {
+      "soglia_min_img_per_specie": 10,
+      "n_specie_incluse": 362,
+      "n_immagini_totali": 8933
+    },
+    {
+      "soglia_min_img_per_specie": 15,
+      "n_specie_incluse": 282,
+      "n_immagini_totali": 7975
+    },
+    {
+      "soglia_min_img_per_specie": 20,
+      "n_specie_incluse": 200,
+      "n_immagini_totali": 6573
+    },
+    {
+      "soglia_min_img_per_specie": 30,
+      "n_specie_incluse": 71,
+      "n_immagini_totali": 3512
+    },
+    {
+      "soglia_min_img_per_specie": 50,
+      "n_specie_incluse": 5,
+      "n_immagini_totali": 1183
+    },
+    {
+      "soglia_min_img_per_specie": 75,
+      "n_specie_incluse": 3,
+      "n_immagini_totali": 1071
+    },
+    {
+      "soglia_min_img_per_specie": 100,
+      "n_specie_incluse": 3,
+      "n_immagini_totali": 1071
+    }
+  ],
+  "pct_immagini_in_cluster_duplicati_sul_selezionato": 0.0234
+}

@@ -1,0 +1,46 @@
+# --- Python ---
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+.venv_rocm/
+venv/
+*.log
+
+# --- Jupyter ---
+.ipynb_checkpoints/
+
+# --- Dati e modelli (troppo pesanti/rigenerabili, mai su Git) ---
+data/
+/models/*
+*.zip
+*.h5
+*.pt
+*.pth
+*.onnx
+
+# --- Cache Hugging Face ---
+.cache/
+
+# --- Secrets / API keys (LLM, HF token, ecc.) ---
+.env
+.env.*
+!.env.example
+*.env.local
+secrets.yaml
+config/secrets*
+
+# --- OS / editor ---
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+# --- Output generati (grafici, summary) — valuta se versionarli o no ---
+docs/generated/
+
+# --- Artefatti deliberatamente versionati per la demo ---
+!/models/marine_classifier_best.pt
+!/models/per_class_metrics.csv
+!/models/support_bucket_summary.csv
+!/models/training_history.json

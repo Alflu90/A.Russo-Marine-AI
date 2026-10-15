@@ -1,0 +1,35 @@
+# Computer vision / training
+# ATTENZIONE: su GPU AMD, "pip install torch" da questo file installa la build CUDA
+# di default, che non usa la GPU. Installare prima la build ROCm seguendo
+# https://pytorch.org/get-started/locally/ (selezionare ROCm), poi installare il
+# resto di questo file.
+torch
+torchvision
+pillow
+
+# Dati e analisi
+pandas
+numpy
+scikit-learn
+imagehash
+plotly
+
+# Dataset e API esterne
+huggingface_hub
+requests
+tqdm
+
+# Base di conoscenza / RAG
+chromadb
+sentence-transformers
+
+# Assistente AI
+crewai
+openai
+mcp[cli]
+
+# Interfaccia web
+fastapi
+uvicorn
+python-multipart
+jinja2

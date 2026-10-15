@@ -1,0 +1,10 @@
+{
+  "n_specie_selezionate_classificatore_pre_fusione": 200,
+  "n_specie_dopo_fusione_duplicati": 196,
+  "n_classi_fuse": 4,
+  "n_classi_escluse_tassonomia_inaffidabile": 2,
+  "n_senza_binomio": 39,
+  "n_risolte_worms": 147,
+  "n_con_occorrenze_obis_e_tassonomia_affidabile": 145,
+  "totale_occorrenze_obis": 4856944
+}

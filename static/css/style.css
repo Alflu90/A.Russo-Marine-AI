@@ -1,0 +1,345 @@
+/*
+  Token di design — stessa palette "Ocean & Coral" usata nel deck e nella sinossi,
+  per coerenza visiva tra tutti i materiali del capstone.
+
+  Colore:
+    --deep    #065A82  blu oceano profondo, dominante
+    --teal    #1C7293  teal, accento secondario
+    --midnight#0B1F2E  quasi nero blu, sfondi scuri
+    --coral   #F4A261  corallo, unico accento vivido (usato con parsimonia)
+    --mist    #F3F8FA  sfondo chiaro, non crema
+    --ink     #16262E  testo principale
+    --slate   #5C7A88  testo secondario
+
+  Tipografia: Source Serif 4 per i titoli (evoca una scheda di campo/pubblicazione
+  scientifica), Inter per corpo e interfaccia — due famiglie chiaramente distinte.
+
+  Layout: allineamento a sinistra, una colonna, larghezza di lettura contenuta.
+  Le tre sezioni hanno trattamenti diversi (zona di upload, grafico, placeholder
+  minimale) invece della stessa card ripetuta tre volte.
+*/
+
+:root {
+  --deep: #065A82;
+  --teal: #1C7293;
+  --midnight: #0B1F2E;
+  --coral: #F4A261;
+  --mist: #F3F8FA;
+  --ink: #16262E;
+  --slate: #5C7A88;
+  --line: #DCE7EC;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  background: var(--mist);
+  color: var(--ink);
+  font-family: 'Inter', system-ui, sans-serif;
+  font-size: 16px;
+  line-height: 1.55;
+}
+
+h1, h2, h3 {
+  font-family: 'Source Serif 4', Georgia, serif;
+  font-weight: 600;
+  color: var(--midnight);
+  margin: 0 0 0.5rem;
+}
+
+h2 { font-size: 1.65rem; }
+
+.lede {
+  color: var(--slate);
+  max-width: 62ch;
+  margin: 0 0 1.5rem;
+}
+
+.fine-print {
+  color: var(--slate);
+  font-size: 0.85rem;
+  margin-top: 0.75rem;
+}
+
+/* ---------- Header ---------- */
+
+.topbar {
+  background: var(--midnight);
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+}
+
+.topbar-inner {
+  max-width: 880px;
+  margin: 0 auto;
+  padding: 1rem 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: #fff;
+  font-family: 'Source Serif 4', serif;
+  font-size: 1.2rem;
+  font-weight: 600;
+}
+
+.brand-icon { font-size: 1.3rem; }
+
+.topnav { display: flex; gap: 1.5rem; }
+
+.topnav a {
+  color: #CFE3EA;
+  text-decoration: none;
+  font-size: 0.95rem;
+}
+
+.topnav a:hover { color: #fff; }
+
+/* ---------- Layout ---------- */
+
+.container {
+  max-width: 880px;
+  margin: 0 auto;
+  padding: 2.5rem 1.5rem 4rem;
+}
+
+.section {
+  padding: 2.5rem 0;
+  border-bottom: 1px solid var(--line);
+}
+
+.section:last-child { border-bottom: none; }
+
+/* ---------- Classificatore: zona di upload ---------- */
+
+.upload-zone {
+  border: 1.5px dashed var(--teal);
+  border-radius: 6px;
+  padding: 2.5rem 1.5rem;
+  text-align: center;
+  background: #fff;
+  cursor: pointer;
+  transition: border-color 0.15s, background 0.15s;
+}
+
+.upload-zone.dragover {
+  border-color: var(--coral);
+  background: #FFF7EE;
+}
+
+.upload-zone p { margin: 0; color: var(--slate); }
+
+.link-btn {
+  background: none;
+  border: none;
+  color: var(--deep);
+  font: inherit;
+  font-weight: 600;
+  text-decoration: underline;
+  cursor: pointer;
+  padding: 0;
+}
+
+.reset-link {
+  display: block;
+  margin-top: 1rem;
+  font-size: 0.9rem;
+}
+
+.preview-img {
+  max-width: 100%;
+  max-height: 280px;
+  border-radius: 4px;
+  margin-top: 1rem;
+}
+
+.primary-btn {
+  margin-top: 1.25rem;
+  background: var(--coral);
+  color: var(--midnight);
+  border: none;
+  padding: 0.7rem 1.6rem;
+  border-radius: 4px;
+  font-family: inherit;
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: filter 0.15s;
+}
+
+.primary-btn:disabled {
+  background: #E3ECEF;
+  color: var(--slate);
+  cursor: not-allowed;
+}
+
+.primary-btn:not(:disabled):hover { filter: brightness(0.94); }
+
+.result-box {
+  margin-top: 1.5rem;
+  padding: 1.25rem 1.5rem;
+  background: #fff;
+  border-left: 3px solid var(--deep);
+}
+
+.predictions-list {
+  list-style: none;
+  margin: 0.75rem 0 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.prediction-row {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.prediction-label {
+  min-width: 180px;
+  font-weight: 500;
+}
+
+.prediction-bar-track {
+  flex: 1;
+  height: 8px;
+  background: var(--line);
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.prediction-bar-fill {
+  height: 100%;
+  background: var(--teal);
+}
+
+.prediction-confidence {
+  min-width: 50px;
+  text-align: right;
+  color: var(--slate);
+  font-size: 0.9rem;
+}
+
+.error-box {
+  margin-top: 1rem;
+  padding: 0.9rem 1.2rem;
+  background: #FDECEC;
+  border-left: 3px solid #C0392B;
+  color: #7A2A20;
+  font-size: 0.92rem;
+}
+
+/* ---------- Ambientale: grafico come fulcro visivo ---------- */
+
+select#species-select {
+  font: inherit;
+  font-size: 0.95rem;
+  padding: 0.55rem 0.8rem;
+  border: 1px solid var(--line);
+  border-radius: 4px;
+  background: #fff;
+  color: var(--ink);
+  min-width: 260px;
+}
+
+.chart-wrap {
+  margin-top: 1.5rem;
+  background: #fff;
+  padding: 1.25rem;
+  border-radius: 4px;
+}
+
+.map-wrap {
+  margin-top: 1.25rem;
+  height: 320px;
+  border-radius: 4px;
+  overflow: hidden;
+  border: 1px solid var(--line);
+}
+
+.summary-grid {
+  margin-top: 1.25rem;
+  display: flex;
+  gap: 2rem;
+}
+
+.stat { display: flex; flex-direction: column; }
+
+.stat-value {
+  font-family: 'Source Serif 4', serif;
+  font-size: 1.6rem;
+  font-weight: 600;
+  color: var(--deep);
+}
+
+.stat-label {
+  font-size: 0.85rem;
+  color: var(--slate);
+}
+
+/* ---------- Assistente: placeholder discreto ---------- */
+
+.section-assistant .lede { margin-bottom: 1.5rem; }
+
+.assistant-form {
+  display: flex;
+  gap: 0.75rem;
+}
+
+.assistant-form input[type="text"] {
+  flex: 1;
+  font: inherit;
+  font-size: 0.95rem;
+  padding: 0.65rem 0.9rem;
+  border: 1px solid var(--line);
+  border-radius: 4px;
+  background: #fff;
+  color: var(--ink);
+}
+
+.assistant-output {
+  margin-top: 1.25rem;
+  padding: 1.25rem 1.5rem;
+  background: #fff;
+  border-left: 3px solid var(--teal);
+  min-height: 2rem;
+  white-space: pre-wrap;
+  line-height: 1.6;
+}
+
+.assistant-output-error {
+  border-left-color: #C0392B;
+  color: #7A2A20;
+}
+
+/* ---------- Footer ---------- */
+
+.footer {
+  text-align: center;
+  padding: 2rem 1rem;
+  color: var(--slate);
+  font-size: 0.85rem;
+}
+
+/* ---------- Accessibilita' ---------- */
+
+:focus-visible {
+  outline: 2px solid var(--coral);
+  outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * { transition: none !important; }
+}
+
+@media (max-width: 600px) {
+  .summary-grid { flex-direction: column; gap: 1rem; }
+  .prediction-label { min-width: 120px; font-size: 0.9rem; }
+}

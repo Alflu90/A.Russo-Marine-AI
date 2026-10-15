@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Marine AI</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,wght@0,500;0,600;1,500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/static/css/style.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.4/dist/leaflet.css" />
+  <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.4/dist/leaflet.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4"></script>
+</head>
+<body>
+
+  <header class="topbar">
+    <div class="topbar-inner">
+      <div class="brand">
+        <span class="brand-icon">🌊</span>
+        <span class="brand-name">Marine AI</span>
+      </div>
+      <nav class="topnav">
+        <a href="#classifier">Classificatore</a>
+        <a href="#environmental">Analisi ambientale</a>
+        <a href="#assistant">Assistente</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+
+    <section id="classifier" class="section section-classifier">
+      <h2>Riconoscimento di specie da immagine</h2>
+      <p class="lede">Carica una foto di un organismo marino: il classificatore, un EfficientNet-B0 addestrato su 196 specie, restituisce le tre ipotesi più probabili.</p>
+
+      <div class="upload-zone" id="upload-zone">
+        <input type="file" id="file-input" accept="image/jpeg,image/png,image/webp" hidden />
+        <p id="upload-hint">Trascina un'immagine qui, o <button id="browse-btn" class="link-btn">scegli un file</button></p>
+        <img id="preview-img" class="preview-img" hidden />
+      </div>
+
+      <button id="classify-btn" class="primary-btn" disabled>Classifica</button>
+
+      <div id="classify-result" class="result-box" hidden>
+        <h3>Risultato</h3>
+        <ul id="predictions-list" class="predictions-list"></ul>
+        <p class="fine-print" id="model-accuracy-note"></p>
+        <button id="reset-btn" class="link-btn reset-link">Carica un'altra immagine</button>
+      </div>
+
+      <div id="classify-error" class="error-box" hidden></div>
+    </section>
+
+    <section id="environmental" class="section section-environmental">
+      <h2>Distribuzione e trend ambientali</h2>
+      <p class="lede">Seleziona una specie per vedere l'andamento delle osservazioni OBIS nel tempo, con gli anni segnalati come anomali.</p>
+
+      <select id="species-select">
+        <option value="">Caricamento specie…</option>
+      </select>
+
+      <div class="chart-wrap">
+        <canvas id="trend-chart" height="90"></canvas>
+      </div>
+
+      <div id="map" class="map-wrap"></div>
+
+      <div id="species-summary" class="summary-grid" hidden>
+        <div class="stat"><span class="stat-value" id="stat-occurrences">—</span><span class="stat-label">Occorrenze OBIS</span></div>
+        <div class="stat"><span class="stat-value" id="stat-aphia">—</span><span class="stat-label">AphiaID (WoRMS)</span></div>
+        <div class="stat"><span class="stat-value" id="stat-reliable">—</span><span class="stat-label">Tassonomia affidabile</span></div>
+      </div>
+    </section>
+
+    <section id="assistant" class="section section-assistant">
+      <h2>Assistente scientifico</h2>
+      <p class="lede">Fai una domanda su una specie del dataset: la risposta si compone in tempo reale, mano a mano che viene generata.</p>
+
+      <form id="assistant-form" class="assistant-form">
+        <input type="text" id="assistant-input" placeholder="Es. che tartaruga marina è presente nel dataset?" autocomplete="off" />
+        <button type="submit" class="primary-btn">Chiedi</button>
+      </form>
+
+      <p id="assistant-status" class="fine-print" hidden></p>
+      <div id="assistant-output" class="assistant-output"></div>
+    </section>
+
+  </main>
+
+  <footer class="footer">
+    <p>Marine AI — Progetto Capstone, Master Python/AI/ML, EPICODE Italia</p>
+  </footer>
+
+  <script src="/static/js/app.js"></script>
+</body>
+</html>
